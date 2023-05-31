@@ -1,0 +1,82 @@
+﻿
+@{
+}
+@model Company.Project.Web.Models.BookReadingEventModel
+<h1>Delete </h1>
+
+<form method="post" asp-action="DeletePost">
+    <input asp-for="Id" hidden />
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <div class="form-control">
+                    <label asp-for="Title"></label>
+                </div>
+                <div class="form-control">
+                    <label asp-for="Date"></label>
+                </div>
+                <div class="form-control">
+                    <label asp-for="Location"></label>
+                </div>
+                <div class="form-control">
+                    <label asp-for="StartTime"></label>
+                </div>
+                <div class="form-control">
+                    <label asp-for="Type"></label>
+                </div>
+                <div class="form-control">
+                    <label asp-for="Duration"></label>
+                </div>
+                <div class="form-control">
+                    <label asp-for="Description"></label>
+                </div>
+                <div class="form-control">
+                    <label asp-for="OtherDetails"></label>
+                </div>
+                <div class="form-control">
+                    <label asp-for="EventInvitee"></label>
+                </div>
+            </div>
+            <div class="col-4">
+                <div>
+                    <input disabled asp-for="Title" class="form-control">
+                </div>
+                <div>
+                    <input disabled asp-for="dateNav" class="form-control">
+                </div>
+                <div>
+                    <input disabled asp-for="Location" class="form-control">
+                </div>
+                <div>
+                    <input disabled asp-for="startTimeNav" class="form-control" />
+                </div>
+                <div>
+                    <select disabled asp-for="Type" class="form-control" asp-items="ViewBag.Type"></select>
+                </div>
+                <div>
+                    <input disabled asp-for="Duration" class="form-control">
+                </div>
+                <div>
+                    <input disabled asp-for="Description" class="form-control">
+                </div>
+                <div>
+                    <input disabled asp-for="OtherDetails" class="form-control">
+                </div>
+                <div>
+                    <input disabled asp-for="EventInvitee" class="form-control overflow-auto">
+                </div>
+
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-2">
+                <input type="submit" class="btn btn-danger w-75 p-1" value="Delete" />
+            </div>
+            <div class="col-2">
+                <a asp-action="Index" class="btn btn-success w-75 p-1">Back</a>
+            </div>
+        </div>
+    </div>
+</form>
+

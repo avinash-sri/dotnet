@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Company.Project.Web.Models.BookReadingEventModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h2>Welcome to Book Reading Event</h2>
+    <h6>Here you can find the previous and future events.</h6>
+</div>
+<br />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6" style="height:70vh; overflow-y: scroll;">
+            <table class=" table table-striped" border="1">
+                <tr>
+                    <th colspan="4">
+                        <button class="alert" style="background-color:teal;color:white;width:100%">
+                            <b>Future Events</b>
+                        </button>
+                    </th>
+                </tr>
+                <tr style=" background-color:cadetblue;color:white;width:100%">
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StartTime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Location)
+                    </th>
+                </tr>
+                @foreach (var element in Model)
+                {
+                    var dateOfEvent = element.Date.ToString("yyyy-MM-dd");
+                    var currentDate = DateTime.Now.ToString("yyyy-MM-dd");
+                    DateTime event_Date = Convert.ToDateTime(dateOfEvent);
+                    DateTime current_Date = Convert.ToDateTime(currentDate);
+                    if (event_Date >= current_Date)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => element.Date)
+                            </td>
+                            <td>
+                                <a class="nav-link text-dark" target="_blank" asp-route-Id="@element.Id" asp-controller="Event" asp-action="ViewEvent"> @element.Title</a>
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => element.StartTime)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => element.Location)
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+        <div class="col-6" style="height:70vh; overflow-y: scroll;">
+            <table class=" table table-striped" border="1">
+                <tr>
+                    <th colspan="4">
+                        <button class="alert" style="background-color:teal;color:white;width:100%">
+                            <b>Previous Events</b>
+                        </button>
+                    </th>
+                </tr>
+                <tr style=" background-color:cadetblue;color:white;width:100%">
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Title)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.StartTime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Location)
+                    </th>
+                </tr>
+                @foreach (var element in Model)
+                {
+                    var dateOfEvent = element.Date.ToString("yyyy-MM-dd");
+                    var currentDate = DateTime.Now.ToString("yyyy-MM-dd");
+                    DateTime event_Date = Convert.ToDateTime(dateOfEvent);
+                    DateTime current_Date = Convert.ToDateTime(currentDate);
+                    if (event_Date < current_Date)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => element.Date)
+                            </td>
+                            <td>
+                                <a class="nav-link text-dark" target="_blank" asp-route-Id="@element.Id" asp-controller="Event" asp-action="ViewEvent"> @element.Title</a>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => element.StartTime)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => element.Location)
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+            </>
+        </div>
+</div>
+</div>

@@ -1,0 +1,42 @@
+﻿@model Company.Project.Web.Models.UserRegistrationModel
+
+<br/>
+<div class="container-fluid">
+    
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <form method="post" asp-action="SignUpPost" class="bg-light">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="Id" hidden />
+                <div class="text-center">
+                    <h4>SignUp Page</h4>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label asp-for="FullName">Full Name</label>
+                    <input asp-for="FullName" class="form-control" placeholder="Enter your full name " />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email"> Email Id</label>
+                    <input type="email" asp-for="Email" class="form-control" placeholder="Enter your email id " />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input type="password" asp-for="Password" class="form-control" placeholder="Enter password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <br />
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary btn-block" value="Sign Up" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
